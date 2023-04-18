@@ -19,7 +19,7 @@ def get_wines_excel(excel_path, sheet_name='Лист1'):
 
 
 def main():
-    pprint(get_wines_excel('assets/wine3.xlsx'))
+    pprint(get_wines_excel('content/wine3.xlsx'))
 
 
 if __name__ == "__main__":

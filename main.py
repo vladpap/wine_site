@@ -9,7 +9,7 @@ env = Environment(
     autoescape=select_autoescape(['html', 'xml'])
 )
 
-data = {"wine_categotys": get_wines_excel("assets/wine3.xlsx"),
+data = {"wine_categotys": get_wines_excel("content/wine3.xlsx"),
         "years_with_you": get_difference_years_rus(1920)}
 
 template = env.get_template('template.html')
