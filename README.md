@@ -1,5 +1,4 @@
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-<img src="https://dvmn.org/assets/img/logo.8d8f24edbb5f.svg" alt= “” width="195" height="50">
 # Новое русское вино
 
 Сайт магазина авторского вина "Новое русское вино".
@@ -37,4 +36,5 @@ $ python main.py
 ## Цели проекта
 
 Код написан в учебных целях — это урок в курсе по Python и веб-разработке на сайте 
-![Devman](https://dvmn.org/assets/img/logo.8d8f24edbb5f.svg)[Devman](https://dvmn.org).
+<img src="https://dvmn.org/assets/img/logo.8d8f24edbb5f.svg" alt= “” width="102" height="25">
+[Devman](https://dvmn.org).
