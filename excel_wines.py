@@ -3,23 +3,22 @@ import collections
 from pprint import pprint
 
 
-def get_wines_excel(excel_path, sheet_name='Лист1'):
-    excel_data_df = pandas.read_excel(excel_path, sheet_name=sheet_name).fillna("")
+def get_wines_excel(excel_data_df):
+    excel_category = excel_data_df.columns.ravel()[0]
 
-    excel_categorys = excel_data_df.columns.ravel()[0]
+    count_category = collections.Counter(excel_data_df[excel_category].tolist())
 
-    count_categorys = collections.Counter(excel_data_df[excel_categorys].tolist())
-
-    list_wines_from_category = {}
-    for wine_category in count_categorys:
+    wines_from_category = {}
+    for wine_category in count_category:
         df_filter = excel_data_df["Категория"].isin([wine_category])
-        list_wines_from_category[wine_category] = excel_data_df[df_filter].to_dict(orient='records')
+        wines_from_category[wine_category] = excel_data_df[df_filter].to_dict(orient='records')
 
-    return dict(sorted(list_wines_from_category.items()))
+    return dict(sorted(wines_from_category.items()))
 
 
 def main():
-    pprint(get_wines_excel('content/wine3.xlsx'))
+    excel_data = pandas.read_excel("content/wine3.xlsx", sheet_name='Лист1').fillna("")
+    pprint(get_wines_excel(excel_data))
 
 
 if __name__ == "__main__":
