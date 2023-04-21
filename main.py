@@ -6,27 +6,32 @@ import pandas
 import settings
 
 
-env = Environment(
-    loader=FileSystemLoader('.'),
-    autoescape=select_autoescape(['html', 'xml'])
-)
-creation_company_year = 1920
+def main():
+    env = Environment(
+        loader=FileSystemLoader('.'),
+        autoescape=select_autoescape(['html', 'xml'])
+    )
+    creation_company_year = 1920
 
-excel_data = pandas.read_excel(
-    settings.excel_path,
-    sheet_name='Лист1').fillna("")
+    excel_data = pandas.read_excel(
+        settings.excel_path,
+        sheet_name='Лист1').fillna("")
 
-wine_site_data = {
-    "wine_categorys": get_wines_excel(excel_data),
-    "years_with_you": get_difference_years_rus(creation_company_year)
-}
+    wine_site_data = {
+        "wine_categorys": get_wines_excel(excel_data),
+        "years_with_you": get_difference_years_rus(creation_company_year)
+    }
 
-template = env.get_template('template.html')
+    template = env.get_template('template.html')
 
-rendered_page = template.render(data=wine_site_data)
+    rendered_page = template.render(data=wine_site_data)
 
-with open('index.html', 'w', encoding="utf8") as file:
-    file.write(rendered_page)
+    with open('index.html', 'w', encoding="utf8") as file:
+        file.write(rendered_page)
 
-server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
-server.serve_forever()
+    server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
+    server.serve_forever()
+
+
+if __name__ == "__main__":
+    main()
