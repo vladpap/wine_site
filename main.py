@@ -13,18 +13,18 @@ def main():
     )
     creation_company_year = 1920
 
-    excel_data = pandas.read_excel(
+    excel_from_file_data = pandas.read_excel(
         settings.excel_path,
         sheet_name='Лист1').fillna("")
 
-    wine_site_data = {
-        "wine_categorys": get_wines_excel(excel_data),
+    content_data = {
+        "wine_category": get_wines_excel(excel_from_file_data),
         "years_with_you": get_difference_years_rus(creation_company_year)
     }
 
     template = env.get_template('template.html')
 
-    rendered_page = template.render(data=wine_site_data)
+    rendered_page = template.render(content_data=content_data)
 
     with open('index.html', 'w', encoding="utf8") as file:
         file.write(rendered_page)
